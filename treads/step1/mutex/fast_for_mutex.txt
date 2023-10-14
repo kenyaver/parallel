@@ -1,0 +1,9 @@
+Мьютексы не принято использовать на прямую, тк это не безопасно. 
+опасно это по причине возможной мертвой блокировки
+
+вместо использования мютексов на прямую, принято заворачивать их в объекты-блокировщики
+в стандаррте 20 их существует 4 вида:
+1) std::lock_guard<std::mutex> lockguard(m); // m - заранее объявленый mutex
+2) std::unique_lock<std::mutex> uniqueLock(m);
+3) std::shared_lock<std::mutex> sharedLock(m);
+4) std::scoped_lock<std::mutex> scopedLock(m);
